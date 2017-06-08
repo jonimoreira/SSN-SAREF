@@ -216,7 +216,7 @@ In this paper we describe an analysis towards ontology alignments between SSN an
 Over the past few years, numerous IoT ontologies were proposed to enable semantic interoperability of sensors in integrated IoT solutions \cite{Ganzha2016a}. In this context, the W3C Semantic Sensor Network (SSN) is considered an ontological foundation for the IoT, covering the application of diverse types of sensors, widely used by initiatives as OpenIoT and INTER-IoT \cite{Ganzha2017a}. 
 Recently, the Smart Appliances REFerence (SAREF) ontology was evolved from the smart appliances domain (e.g. smart ovens and refrigerators) \cite{Daniele2015} to cover other characteristics of the IoT domain \cite{Daniele2016b}, being created in close interaction with the smart home market \cite{Daniele2016}. It is grounded on 47 “semantic assets”, including syntactic standards, proprietary data models and other ontologies, as W3C SSN. 
 
-A challenge to integrate sensor networks relying on SSN with smart appliance solutions relying on SAREF is how to align these ontologies. Therefore, to enable their semantic integration of SSN and SAREF, an ontology alignment is required, i.e. finding the correspondences between entities (atomic alignment) or groups of entities and sub-structures (complex alignment) \cite{Ganzha2015}. An IoT platform can benefit from these ontology alignments when it needs to interoperate with other IoT platforms relying on SAREF and/or SSN. To enable integration among two IoT platforms, where one platform relies on SSN and the other relies on SAREF, a semantics translation approach can be used to implement their alignments.
+IoT platforms enable software engineers to bridge the gap between device sensors and data networks through suites of components, which can include semantic technologies. A challenge to enable semantic integration between two IoT platforms, where one platform relies on SSN and the other relies on SAREF, is how to align these ontologies. To deal with this problem, the development of ontology alignments between SSN and SAREF is required, i.e. finding and mapping the correspondences between entities (atomic) or groups of entities and sub-structures (complex). An approach for ontology alignment is semantics translation, which is a process that transforms some information described semantically, in terms of a source ontology, to information described in terms of a target ontology \cite{Ganzha2015}. 
 
 In this paper we describe the initial steps towards bi-directional semantic translation rules between SSN and SAREF. We adopted a software engineering methodology including specification and implementation phases. Here we described the specification of the mappings among the main elements for the semantic translations from SSN to SAREF. This specification will be used for further configuration and deployment in the Inter-Platform Semantic Mediator (IPSM) of the INTER-IoT project (\url{www.inter-iot-project.eu}). An evaluation of these initial mappings is presented, demonstrating how the wind sensor WM30, an example provided by the W3C, is translated from SSN to SAREF. The semantics of the generated ontology is verified whether was maintained or lost after the simulations of the translations. 
 
@@ -328,13 +328,12 @@ The characteristics of \textit{ssn:\-SensingDevice}, inherited from \textit{ssn:
 
 \begin{lstlisting}[caption={Pseudocode snippet for M01},label={code:sample}]
 IN: {ssn_sensingDevice}  
-create saref_sensor = saref:\-Sensor  
+create saref_sensor = saref:Sensor  
 
-/* Copy all rdfs properties */ 
 saref_sensor.rdfs:* = ssn_sensingDevice.rdfs:*
     
-create saref_function = saref:\-SensingFunction  
-create saref_hasFunction = saref:\-hasFunction  
+create saref_function = saref:SensingFunction  
+create saref_hasFunction = saref:hasFunction  
 create saref_sensor saref_hasFunction saref_function  
 
 \end{lstlisting}
@@ -353,21 +352,21 @@ Once executing M01, the next step is to check the composition relationship of a 
 
 \begin{lstlisting}[caption={Pseudocode snippet for M02},label={code:sample}]
 IN: {ssn_sensingDevice, saref_sensor}
-for each ssn_system in ssn_sensingDevice.ssn:\-hasSubSystem 
+for each ssn_system in ssn_sensingDevice.ssn:hasSubSystem 
 { 
-  create saref_device_component = saref:\-Device 
-  if ssn_system is ssn:\-SensingDevice then 
+  create saref_device_component = saref:Device 
+  if ssn_system is ssn:SensingDevice then 
   { 
-    /* transform saref:\-Device to saref:\-Sensor */
+    /* transform saref:Device to saref:Sensor */
     saref_device_component = Map(M01, ssn_system) 
   } 
   else 
-  if ssn_system is ssn:\-Device then 
+  if ssn_system is ssn:Device then 
   { 
     /* Copy all rdfs properties */ 
     saref_device_component.rdfs:* = ssn_system.rdfs:* 
   } 
-  create saref_consistsOf = saref:\-consistsOf 
+  create saref_consistsOf = saref:consistsOf 
   create saref_sensor saref_consistsOf saref_device_component 
 }
 \end{lstlisting}
@@ -379,20 +378,18 @@ Once executing M01 and M02, the next step is to map the measurement property whi
 IN: {ssn_sensingDevice, saref_sensor}
 for each ssn_property in ssn_sensingDevice.ssn:\-observes 
 { 
-  create saref_property = saref:\-Property 
+  create saref_property = saref:Property 
   
   saref_property = GetPropertyInSAREF(ssn_property)
     
-  /* check if the property already exists */
-  if saref_property is null then 
+  if saref_property exists in SAREF then 
   { 
-    /* Copy all rdfs properties */ 
     saref_property.rdfs:* = ssn_property.rdfs:* 
   } 
-  create saref_measuresProperty = saref:\-measuresProperty 
+  create saref_measuresProperty = saref:measuresProperty 
   create saref_sensor saref_measuresProperty saref_property 
   
-  create saref_isMeasuredByDevice = saref:\-isMeasuredByDevice
+  create saref_isMeasuredByDevice = saref:isMeasuredByDevice
   create saref_property saref_isMeasuredByDevice saref_sensor
 }
 \end{lstlisting}
