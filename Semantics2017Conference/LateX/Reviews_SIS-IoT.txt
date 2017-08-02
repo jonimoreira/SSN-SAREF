@@ -1,0 +1,86 @@
+The SIS-IoT Organizing Committee
+
+
+----------------------- REVIEW 1 ---------------------
+PAPER: 2
+TITLE: Towards IoT platforms’ integration: Semantic Translations between W3C SSN and ETSI SAREF
+AUTHORS: Joao Moreira, Laura M. Daniele, Luis Ferreira Pires, Marten van Sinderen, Katarzyna Wasielewska, Pawel Szmeja, Wieslaw Pawlowski, Maria Ganzha and Marcin Paprzycki
+
+Semantic interoperability: 3 (yes)
+Standardization: 3 (yes)
+Overall evaluation: 1 (weak accept)
+
+----------- Overall evaluation -----------
+# Misc. mistakes
+- page 6 : broken reference to a figure
+- There are typographic mistakes: text overflows the column on page 7 for instance
+- 4.3: "will must to be"
+
+
+# Unclear elements
+- The sentence "SAREF facilitates the matching of existing assets..." is a claim that should be supported by an explanation or a citation.
+- There is no explanation for the ".rdfs" attribute in listing 1.
+- In section 3, the sentence "Instead of a formal language for the transformation definition it is used a natural language or a pseudo-code approach" is confusing. It looks like pseudo code and natural language are comparable, even though it is clear in the rest of the paper that they are two very different aspects of the matter.
+- At the beginning of the discussion, the authors suggest to "add the object property ssn:hasMeasurementCapability on saref:Sensor" by a new mapping. What is technically proposed is not clear: creating a nex property, a new class, a new restriction ?
+- In the discussion, the authors point out the need to extend the M02 mapping to consider further than the ssn:System class in its loop. However, any subject or object of the ssn:hasSubsystem property is, de facto, an ssn:System according to the definition of this property. Have the authors considered preceding the execution of the M02 algorithm by a step of rdfs reasoningin order to saturate the knowledge base and keep their algorithm as generic as possible ?
+
+# References issues
+- Why propose a new alignment format ? Since reference 12 is not yet published, some more explanation would be welcome.
+- The proposed approach seems to be issued from the "semantic interoperability design patterns identified in INTER-IoT", but no pointers are given to find more about these patterns.
+- A lot of references to past studies that could be a little bit more elaborated, just to get a summary, for instance for the state of the art of alignment approaches. Even though the referenced papers are quite short, a simple positionning would make the present paper more self-sufficient.
+
+The contribution, although it contains some inaccuracies, shows potential. It underlines the necessity of ontologies alignment for semantic interoperability, and proposes an interesting technique for these alignments. The ontologies considered, as well as the proposed process, fits a standardization process, making it relevant to the workshop. The integration of simple and complex alignments makes it at the state of the art for semantic interoperability in the IoT, and the future work can be discussed live during the workshop, especially regarding the adaptation to the new version of ssn.
+
+For these reasons, I think this paper should be accepted, even though I have reserves regarding the technical content.
+
+
+----------------------- REVIEW 2 ---------------------
+PAPER: 2
+TITLE: Towards IoT platforms’ integration: Semantic Translations between W3C SSN and ETSI SAREF
+AUTHORS: Joao Moreira, Laura M. Daniele, Luis Ferreira Pires, Marten van Sinderen, Katarzyna Wasielewska, Pawel Szmeja, Wieslaw Pawlowski, Maria Ganzha and Marcin Paprzycki
+
+Semantic interoperability: 3 (yes)
+Standardization: 2 (somewhat)
+Overall evaluation: 0 (borderline paper)
+
+----------- Overall evaluation -----------
+This paper discusses the potential alignments that can be defined between the (old) W3C SSN ontology and the ETSI SAREF ontology in order to define a semantic mediator for enabling semantic interoperability between IoT platforms. It first introduces the INTER-IoT project, the SSN and the SAREF ontologies. Then it defines the applied agile methodology that aims at developing a way-and-back semantic transformations from SSN to SAREF using rules, and checking whether some previously defined competency questions for SSN can still hold for the transformed version in SAREF. A first sprint of this methodology is presented: one direction only, three terms only, with mapping described partially using pseudocode   on one example (the Vaisala WM30 sensor SSN example), and five competency questions, out of which three only are preserved after the transformation.
+
+Defining semantic mediators would indeed be a good approach to achieve semantic interoperability between systems (including IoT platforms) if RDF lifting mechanisms has already been defined for the messages they expose/consume. The paper introduction and the background section motivate the work well and provide a good overview of the two ontologies to be aligned.
+
+On the other hand, the application of this methodology to SSN-SAREF is on a too early stage to be useable or referenceable, the snippets are too vague and do not help to understand precisely the transformation. Also, there is a new version of SSN that is in the process of becoming a standard (it should be in Proposed Recommendation phase when the SEMANTiCS conference will hold).
+
+- p7. the two universal quantifiers on property ssn:forProperty are obviously wrong.
+- reference missing p. 6 Figure ??.
+- Paw??owski in reference 10
+
+
+----------------------- REVIEW 3 ---------------------
+PAPER: 2
+TITLE: Towards IoT platforms’ integration: Semantic Translations between W3C SSN and ETSI SAREF
+AUTHORS: Joao Moreira, Laura M. Daniele, Luis Ferreira Pires, Marten van Sinderen, Katarzyna Wasielewska, Pawel Szmeja, Wieslaw Pawlowski, Maria Ganzha and Marcin Paprzycki
+
+Semantic interoperability: 3 (yes)
+Standardization: 3 (yes)
+Overall evaluation: 1 (weak accept)
+
+----------- Overall evaluation -----------
+This paper presents some ontology alignments between the SSN and the SAREF ontologies together with the algorithms formalized in pseudocode to implement the translations. The paper is in general well written and the topic is definitely worth discussing during the workshop.
+
+There are however some open questions about the presented work that authors could address or explain in the final version:
+
+.- Why an ontology alignment language is not reused as for example "EDOAL: Expressive and Declarative Ontology Alignment Language" (http://alignapi.gforge.inria.fr/edoal.html)? Regarding the language used, which is its expressivity and its compatibility with OWL semantics?
+
+.- Why are ontologies translated instead of instances of the ontologies? I ask this question also because it is not clear from the beginning in which level the transformation is done and the reader keeps wondering for a while. Are there plans for translating the data?
+
+Regarding the second paragraph in section "4.3 Discussion", it is true that sensor is not an specialization of system in ssn however a SensingDevice, which is a specific type of sensor, is. Therefore, the hasSubSystem predicate can be used for those sensors that are devices. Authors should clarify what they mean with this conceptual issue.
+
+Regarding the references bibliography, authors might consider citing the LOV4IoT work available at http://sensormeasurement.appspot.com/?p=lov4iot as it is a quite important contribution in the field.
+
+
+Minor:
+.- Page 1, last paragraph "an one ontology"
+.- Reference 10.
+.- Section 4.3 "questions(five)" -> questions (five)
+.- Reference 10. "Paw??owski"
+.- Reference 12 "andGanzha" -> and Ganzha

@@ -1,0 +1,253 @@
+
+----------------------- REVIEW 1 ---------------------
+PAPER: 41
+TITLE: Towards IoT platforms’ integration: Semantic Translations between W3C SSN and ETSI SAREF
+AUTHORS: Joao Moreira, Laura Daniele, Luis Ferreira Pires, Marten van Sinderen, Katarzyna Wasielewska, Pawel Szmejaz, Wieslaw Pawlowski, Maria Ganzha and Marcin Paprzycki
+
+Reviewer's confidence: 3 ((medium))
+APPROPRIATENESS: 3 (fair)
+RELEVANT TOPIC: 1 (Regular Research & Innovation Paper)
+IMPACT OF IDEAS AND RESULTS: 2 (poor)
+CLARITY AND QUALITY OF WRITING: 2 (poor)
+RELATED WORK: 2 (poor)
+IMPLEMENTATION AND SOUNDNESS: 3 (fair)
+EVALUATION: 2 (poor)
+ORIGINALITY / INNOVATIVENESS: 3 (fair)
+OVERALL EVALUATION: -1 (weak reject)
+Vocabulary/Ontology: yes
+Potential Demo: no
+Informative question on DBpedia: no
+
+----------- Paper Summary -----------
+The paper describes the alignment between the SAREF ontology (dealing with general IoT entities) and the W3C SSN ontology (focused on sensing devices and observations).
+
+----------- Reasons to Accept -----------
+IoT semantic interoperability is an interesting topic.
+
+----------- Reasons to Reject -----------
+Poor evaluation of the alignments.
+Poor description of the approach.
+Need a more concrete justification (rationale behind the work).
+
+----------- General Comments to the Author(s) -----------
+The contribution of the paper is on the alignment of the SAREF ontology towards the SSN but no clear rationale behind this alignment can be found apart the generic "interoperability" stance. Are two systems adopting different ontologies need to interoperate? What particular integration scenario requires the SAREF ontology to be aligned with SSN?
+
+Only one example of alignment has been provided and this is too limited to be an evaluation in itself.
+
+The language used to express the alignments is not standard (i.e not DL based, not SPARQL or ''standard'' rule based).
+This makes the reading of the main contribution of the paper hard to understand and it should be presented in more detail prior the mapping presentation section or, if references are available, delegate such description to the reference.
+The only reference mentioned for the INTER-IoT is not available to review because "in preparation". Does this mean that the paper has been accepted and in printing? Or submitted and waiting for results? It is unhortodox to include a reference that has not been accepted.
+
+Paper template must be used when formatting different sections of the paper (e.g. the authors' affiliations).
+
+Introduction section:
+ "was evolved" --> "has evolved" or "evolved".
+ What are "syntactic standards"? Syntactic interoperability should be covered by the use of RDF to represent the information.
+ "Semantic assets" : are those classes?
+
+
+----------------------- REVIEW 2 ---------------------
+PAPER: 41
+TITLE: Towards IoT platforms’ integration: Semantic Translations between W3C SSN and ETSI SAREF
+AUTHORS: Joao Moreira, Laura Daniele, Luis Ferreira Pires, Marten van Sinderen, Katarzyna Wasielewska, Pawel Szmejaz, Wieslaw Pawlowski, Maria Ganzha and Marcin Paprzycki
+
+Reviewer's confidence: 5 ((expert))
+APPROPRIATENESS: 3 (fair)
+RELEVANT TOPIC: 1 (Regular Research & Innovation Paper)
+IMPACT OF IDEAS AND RESULTS: 2 (poor)
+CLARITY AND QUALITY OF WRITING: 3 (fair)
+RELATED WORK: 1 (very poor)
+IMPLEMENTATION AND SOUNDNESS: 2 (poor)
+EVALUATION: 2 (poor)
+ORIGINALITY / INNOVATIVENESS: 2 (poor)
+OVERALL EVALUATION: -2 (reject)
+Vocabulary/Ontology: no
+Potential Demo: no
+Informative question on DBpedia: no
+
+----------- Paper Summary -----------
+The paper presents three mappings between three terms from the W3C SSN ontology and the three corresponding terms from the ETSI SAREF ontology. Then, it validates the translation of a sample ontology using such mappings through competency questions.
+
+----------- Reasons to Accept -----------
+The topic of finding mappings, and therefore potential agreements, between work performed in different standardisation bodies is very relevant.
+
+----------- Reasons to Reject -----------
+However, the paper falls short in several aspects so as to be considered for publication (mainly motivation, related work, and limited solution).
+
+----------- General Comments to the Author(s) -----------
+It is not clear which version of the SSN and of the SAREF ontologies the authors are using. After reading the paper, it is clear that the authors are mapping SSN 1.0 and SAREF 2.0, but this should be clearer before in the paper.
+
+Related to this, since the second version of SSN is currently under development (and it is expected to be published before the SEMANTICS conference takes place), maybe by that time the work presented is not so relevant.
+
+
+I think that the first part of the paper title "Towards IoT platforms' integration" is not appropriate at all for the proposed contribution of the paper. Furthermore, the paper does not talk about platforms integration at all. Therefore, the title of the paper should change.
+
+
+The work is not properly motivated in the introduction; it just mentions that two ontologies exist and that mappings are needed for them. The problem should be presented in a wider scope: why do we need to define mappings among IoT ontologies? has anyone made it before? why these two particular ontologies? why that concrete example is representative?
+
+
+The paper is full of citations to InterIoT papers instead of citing the original sources in plenty of topics (ontology matching, IoT ontologies, etc.). The paper should cite the original sources of information.
+
+An effect of this is that, with the exception of 2 references, all the references in the paper come from the paper authors; when they should cover existing related work.
+
+This can be seen in section 2, which mainly describes an Inter-IoT component and the two ontologies, which cannot be considered to comprehensively cover the state of the art.
+
+
+The WM30 example used in the paper is quite small (5 axioms). Furthermore, in the listing at the end of section 2.2, the same URI is used to identify different things (this appears correctly later in the paper).
+
+
+The original SAREF ontology was developed by defining high-level mappings between SSN and the SAREF ontology. It is not clear from the mappings presented in the paper how many of them were already identified in that stage.
+
+
+In order to identify mappings between two concepts, the mappings should be defined bidirectionally. This makes sense not only from the conceptual perspective but also from the logical one: if A is subclass of B and B is subclass of A, then A and B are equivalent. Only taking into account one direction may lead to incorrect mappings. The authors should motivate and explain why the mappings have been defined unidirectionally.
+
+
+In any case, the main drawback of the paper is that it just defines three mappings, which makes the proposed alignment of limited utility (it just covers 3 vocabulary terms from the 108 defined in SSN). Also the evaluation results obtained with only 5 competency questions are not significant.
+
+
+The syntax of the mapping pseudocode is not explained, as well as the meaning of the functions employed (e.g., GetPropertyInSAREF).
+
+
+Section 4.1.1 mentions that the mapping also transforms ssn:Sensor into saref:Sensor. This is not correct because not every ssn:Sensor is a device, as happens in SAREF, so this will potentially lead to incorrect statements.
+
+
+It is not clear why something that uses the ssn:hasSubSystem property is created as a Device; it could be another type of system that is not a device and, as above, will lead to incorrect statements.
+
+
+One thing that is not explained in the paper is why the term URIs are maintained after the translation and not changed. The authors should explain this. Also, for some of the newly-created URIs, it is not clear how the naming is specified in the mappings to ensure uniqueness.
+
+
+In the evaluation through competency questions, the authors should quantify the results according to the amount of knowledge lost in the translation, and not in terms of the competency questions fully answered or not. Right now either the competency question is fully answered or not, but it could be half-answered.
+
+
+Figures 1 and 3 are very difficult to read. It is not clear also the contribution of figure 1 to the content of the paper (maybe it could be removed?).
+
+The writing of the paper must be reviewed, as well as the format of the references.
+
+
+----------------------- REVIEW 3 ---------------------
+PAPER: 41
+TITLE: Towards IoT platforms’ integration: Semantic Translations between W3C SSN and ETSI SAREF
+AUTHORS: Joao Moreira, Laura Daniele, Luis Ferreira Pires, Marten van Sinderen, Katarzyna Wasielewska, Pawel Szmejaz, Wieslaw Pawlowski, Maria Ganzha and Marcin Paprzycki
+
+Reviewer's confidence: 2 ((low))
+APPROPRIATENESS: 4 (good)
+RELEVANT TOPIC: 1 (Regular Research & Innovation Paper)
+IMPACT OF IDEAS AND RESULTS: 3 (fair)
+CLARITY AND QUALITY OF WRITING: 4 (good)
+RELATED WORK: 4 (good)
+IMPLEMENTATION AND SOUNDNESS: 4 (good)
+EVALUATION: 3 (fair)
+ORIGINALITY / INNOVATIVENESS: 4 (good)
+OVERALL EVALUATION: 0 (borderline paper)
+Vocabulary/Ontology: no
+Potential Demo: no
+Informative question on DBpedia: no
+
+----------- Paper Summary -----------
+The following paper presents an ontology alignment between the W3C Semantic Sensor Network (SSN) ontology and the ETSI Smart Appliances REFerence (SAREF).
+
+----------- Reasons to Accept -----------
+- The paper presents a nice analysis on the alignment between these two ontologies
+- An evaluation and an error/incompleteness analysis is performed by using competency questions
+- The paper is well motivated and the problem is relevant to the SW and IoT communities
+
+----------- Reasons to Reject -----------
+- The paper is missing relevant work from the area of ontology mapping and alignment
+- It is unclear how the competency question have been generated/selected for the evaluation, plus these competency questions have been tested with the translation of only one sensor (Vaisala WM30)
+- Alignments are presented fro SSN to SAREF but not from SAREF to SSN
+
+----------- General Comments to the Author(s) -----------
+These paper presents an ontology alignment between the W3C Semantic Sensor Network (SSN) ontology and the ETSI Smart Appliances REFerence (SAREF). The final goal is to enhance the semantic interoperability of IoT solutions.
+
+The paper is well motivated and structured and presents a problem that is relevant for both, the IoT and the SW communities. I also like the discussion analysis presented in the paper, exposing the mismatches between the two ontologies and the proposals on how to extend the SAREF ontology to address a more complete level of interoperability.
+
+I am however missing a reflection of the different state of the art approaches on ontology mapping and alignment, and a better motivation on the selected mapping methodology.
+
+Regarding the evaluation, it is unclear how competency questions have been generated. Have they been generated by domain experts? Did these domain experts have previous knowledge of the SSN and SAREF ontologies? have they been designed by ontology engineers?
+
+Similarly, the proposed alignments have been tested with only one sensor (Vaisala WM30). While this may have been the original sensor used to test the SSN ontology, a more complete evaluation with different types of sensors would be desirable to check whether the proposed alignments work in different scenarios or if additional semantics are being lost during the translation process.
+
+Regarding the presented alignment, the authors mention in the paper that "here we detail only the mappings from SSN to SAREF because of space limitation, the other direction (from SAREF to SSN) will be reported in the future." However, a link to the complete alignment could also be made available under (https://github.com/jonimoreira/SSN-SAREF).
+
+Minor issues
+-----------
+Section 1: the semantics of the generated ontology is (ARE) verified
+Section 2: please note that Fig1 is hardly visible
+Section 2.3: The SAREF ontology provides building blocks that enables (ENABLE)
+Section 4.3: In thi (THIS) way
+
+Notes: My expertise in the IoT domain is low, and therefore I am not able to judge the impact that this alignment may have for the IoT community.
+
+
+----------------------- REVIEW 4 ---------------------
+PAPER: 41
+TITLE: Towards IoT platforms’ integration: Semantic Translations between W3C SSN and ETSI SAREF
+AUTHORS: Joao Moreira, Laura Daniele, Luis Ferreira Pires, Marten van Sinderen, Katarzyna Wasielewska, Pawel Szmejaz, Wieslaw Pawlowski, Maria Ganzha and Marcin Paprzycki
+
+Reviewer's confidence: 4 ((high))
+APPROPRIATENESS: 4 (good)
+RELEVANT TOPIC: 1 (Regular Research & Innovation Paper)
+IMPACT OF IDEAS AND RESULTS: 2 (poor)
+CLARITY AND QUALITY OF WRITING: 4 (good)
+RELATED WORK: 4 (good)
+IMPLEMENTATION AND SOUNDNESS: 1 (very poor)
+EVALUATION: 1 (very poor)
+ORIGINALITY / INNOVATIVENESS: 2 (poor)
+OVERALL EVALUATION: -2 (reject)
+Vocabulary/Ontology: no
+Potential Demo: no
+Informative question on DBpedia: no
+
+----------- Paper Summary -----------
+This paper discusses the potential alignments that can be defined between the (old) W3C SSN ontology and the ETSI SAREF ontology in order to define a semantic mediator for enabling semantic interoperability between IoT platforms. It first introduces the INTER-IoT project, the SSN and the SAREF ontologies. Then it defines the applied methodology that aims at developing a semantic translator from SSN to SAREF using rules, and checking wether some previously defined competency questions for SSN can still hold for the transformed version in SAREF. A (very partial) mapping is described using pseudocode, it has been applied manually to the Vaisala WM30 sensor SSN example, and the satisfaction of the competency questions is finally evaluated and discussed.
+
+----------- Reasons to Accept -----------
+A1: first paper that discusses the alignment between the long-standing SSN ontology and the new SAREF ontology
+
+A2: good explanation of the vision and methodology in the INTER-IoT project
+
+A3: correct (but very incomplete) mapping between SSN and SAREF
+
+----------- Reasons to Reject -----------
+R1: applies to the old SSN ontology, the new version may become a standard soon, which would obsolete the paper.
+
+R2: very incomplete (but correct) mapping between SSN and SAREF
+
+R3: too preliminary evaluation on a (manual) application of the algorithm on a single example
+
+R4: SAREF fails to cover the identified competency questions of SSN and the authors conclude that SAREF should be augmented. Is it the aim of SAREF to cover all the competency questions from other ontologies? Then why not just reusing them?
+
+----------- General Comments to the Author(s) -----------
+This paper discusses the potential alignments that can be defined between the (old) W3C SSN ontology and the ETSI SAREF ontology in order to define a semantic mediator for enabling semantic interoperability between IoT platforms. It first introduces the INTER-IoT project, the SSN and the SAREF ontologies. Then it defines the applied methodology that aims at developing a semantic translator from SSN to SAREF using rules, and checking wether some previously defined competency questions for SSN can still hold for the transformed version in SAREF. A (very partial) mapping is described using pseudocode, it has been applied manually to the Vaisala WM30 sensor SSN example, and the satisfaction of the competency questions is finally evaluated and discussed.
+
+Defining semantic mediators would indeed be a good approach to achieve semantic interoperability between systems (including IoT platforms) if RDF lifting mechanisms has already been defined for the messages they expose/consume. The paper introduction and background section motivate the work well and provide a good overview of the two ontologies to be aligned.
+
+One important problem with the paper is that it applies to the old SSN ontology, although the new version is in the process of becoming a standard, thus the paper may become obsolete before the SEMANTiCS conference holds.
+
+Section 3 introduces a promising methodology, but this paper is a very preliminary application of this methodology, which is evaluated on a (manual) application of the algorithms on a single example. Only five competency questions are identified for SSN/SAREF mapping, which is very incomplete.
+
+Section 4 describes the proposed semantic translation from SSN to SAREF using three mappings that are described using pseudocode snippets. The mappings look correct, but these snippets actually bring more confusion to the reader than they help understanding how the conversion is defined. Equal signs, functions, maps, prefixed uris, star notations, are mixed together and it's very hard to get what is the input and how it is transformed into the output.
+
+Section 4.2 describes the result of applying these pseudo algorithms on the Vaisala WM30 SSN example, which is available as online material. The five competency questions are then evaluated on the transformed ontology, and it appears that SAREF fails to cover two of the identified competency questions of SSN. The authors conclude that SAREF should be augmented. Is it the aim of SAREF to cover all the competency questions from other ontologies? Then why not just reusing them?
+
+
+Below are some detailed points and minor comments:
+
+- p2 Skeleton module: Sennsing -> Sensing
+- p3 axioms: shouldn't it be WM30:WM30_WindDirection \subseteq \exsits ssn:observes.WM_30_WindDirection (there is a missing 'd' also)
+- please precise what are the other partners involved in ETSI SAREF. UPM (Maria and Raul) are highly involved and referenced as contributors, but too rarely cited explicitly.
+- p3 OnemM2M -> OneM2M
+- p3. offers a lists -> offers a list
+- Measurement could clearly be mapped to SSN Observation and ObservationResult, why is this not proposed?
+- p4. Figure 2: why is the link between Transformation definition and Transformation named "input" ?
+- p4. As first evaluation -> As a first evaluation
+- p5. The code snippet below -> the code snippet is above.
+- p5. These object properties relates to -> relate to
+- p5. if not exists -> rephrase
+- p5. Listing 3. exists in SAREF --> what does this mean ? What happens for properties that have a slightly different naming ? (e.g., Colour vs Color ?)
+- p6. Where are the SPARQL queries equivalent to the Competency Questions ?
+- p6. CQ014 doesn't seem to be conformant to the pseudocode -> section 4.1.1 does not mention existential restrictions at all.
+- p6. how is the naming of the saref_function chosen ? automatically ?
+- p6. wipes vs wiper
+- p7. Axiom  ssn:forProperty only WM30:WindDirection is obviously wrong. Something wrong with the manual application of the algorithms ?

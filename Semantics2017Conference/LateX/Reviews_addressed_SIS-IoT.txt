@@ -1,0 +1,92 @@
+Addressing reviews: 
+
+------------ ABSTRACT ------------ 
+
+
+------------ INTRODUCTION ------------ 
+
+
+------------ BACKGROUND ------------  
+R1. - The sentence "SAREF facilitates the matching of existing assets..." is a claim that should be supported by an explanation or a citation.
+>> "SAREF facilitates the matching of existing assets, since it was developed based on standards, ontologies, data models and protocols of the IoT domain, providing a high-level mapping of them (available in SAREF's first interim study report)."
+
+
+------------ METHODOLOGY ------------  
+R1. - In section 3, the sentence "Instead of a formal language for the transformation definition it is used a natural language or a pseudo-code approach" is confusing. It looks like pseudo code and natural language are comparable, even though it is clear in the rest of the paper that they are two very different aspects of the matter.
+>> "For the transformation definition, an approach based on natural language enriched with pseudo-code is used instead of a formal language, similar to the OASIS EDXL-TEP and HL7 (...)"
+
+R3. .- Why an ontology alignment language is not reused as for example "EDOAL: Expressive and Declarative Ontology Alignment Language" (http://alignapi.gforge.inria.fr/edoal.html)? Regarding the language used, which is its expressivity and its compatibility with OWL semantics?
+>> Implementation level. "INTER-IoT provides its own alignment format, based on alignment API with a declarative ontology alignment language (XML-based), to represent interconnections between semantic data of multiple ontologies."
+
+------------ SEMANTIC TRANSLATIONS ------------  
+R1. - There is no explanation for the ".rdfs" attribute in listing 1.
+>> "All RDFS properties are copied fromssn:SensingDevicetosaref:Sensor"
+
+R1. - At the beginning of the discussion, the authors suggest to "add the object property ssn:hasMeasurementCapability on saref:Sensor" by a new mapping. What is technically proposed is not clear: creating a nex property, a new class, a new restriction ?
+>> "we  suggest  that  anew mapping is created to align the structure from SSN, i.e.create the object propertyssn:hasMeasurementCapabilityonsaref:Sensorwith the restriction of onlyssn:MeasurementCapability"
+
+R1. - In the discussion, the authors point out the need to extend the M02 mapping to consider further than the ssn:System class in its loop. However, any subject or object of the ssn:hasSubsystem property is, de facto, an ssn:System according to the definition of this property. Have the authors considered preceding the execution of the M02 algorithm by a step of rdfs reasoningin order to saturate the knowledge base and keep their algorithm as generic as possible ?
+>> Agree. "Both  are ssn:Sensor, but the composition relationship (ssn:hasSubSystem)is applied from assn:Systemto assn:System.  Therefore, theM02 mapping must not consider the types of the subject orthe object of the ssn:hasSubsystem property"
+
+R3. .- Why are ontologies translated instead of instances of the ontologies? I ask this question also because it is not clear from the beginning in which level the transformation is done and the reader keeps wondering for a while. Are there plans for translating the data?
+>> The translation is in the instance level, as shown with WM30 and described in the methodology: "These mappings are a definition of transformations of the instance level of these ontologies, e.g. the transformations are able to transform from the WM30 ontology (an instance of SSN) to an equivalent instance of SAREF." 
+
+R3. Regarding the second paragraph in section "4.3 Discussion", it is true that sensor is not an specialization of system in ssn however a SensingDevice, which is a specific type of sensor, is. Therefore, the hasSubSystem predicate can be used for those sensors that are devices. Authors should clarify what they mean with this conceptual issue.
+>> "Both  are ssn:Sensor, but the composition relationship (ssn:hasSubSystem)is applied from assn:Systemto assn:System.  Therefore, theM02 mapping must not consider the types of the subject orthe object of the ssn:hasSubsystem property"
+
+------------ CONCLUSIONS ------------  
+
+
+------------ REFERENCES ------------  
+R1. - Why propose a new alignment format ? Since reference 12 is not yet published, some more explanation would be welcome.
+>> Removed reference: [12]  M. Paw lowski, Wies law andGanzha, M. Paprzycki,P. Szmeja, and K. Wasielewska. Streaming semantictranslation (in preparation). In21st InternationalConference on System Theory, Control andComputing, October 19 - 21, 2017, Sinaia, Romania
+
+R1. - The proposed approach seems to be issued from the "semantic interoperability design patterns identified in INTER-IoT", but no pointers are given to find more about these patterns.
+>> Ref. [7]
+
+R1. - A lot of references to past studies that could be a little bit more elaborated, just to get a summary, for instance for the state of the art of alignment approaches. Even though the referenced papers are quite short, a simple positionning would make the present paper more self-sufficient.
+>> No space.
+
+R3. Regarding the references bibliography, authors might consider citing the LOV4IoT work available at http://sensormeasurement.appspot.com/?p=lov4iot as it is a quite important contribution in the field.
+>> No space.
+
+
+------------ MISC ------------  
+R1. 
+- page 6 : broken reference to a figure
+- 4.3: "will must to be"
+>> OK
+
+
+R1. - There are typographic mistakes: text overflows the column on page 7 for instance
+
+R2. 
+- p7. the two universal quantifiers on property ssn:forProperty are obviously wrong.
+>> From the original WM30. Added: "the universal quantifier on ssn:forProperty(Figure 4) seems to be wrong"
+- reference missing p. 6 Figure ??.
+- Paw??owski in reference 10
+>> OK
+
+R3. .- Page 1, last paragraph "an one ontology"
+.- Reference 10.
+.- Section 4.3 "questions(five)" -> questions (five)
+.- Reference 10. "Paw??owski"
+.- Reference 12 "andGanzha" -> and Ganzha
+>> OK
+
+
+------------------ REASONS TO ACCEPT -----------------
+
+R1. The contribution, although it contains some inaccuracies, shows potential. It underlines the necessity of ontologies alignment for semantic interoperability, and proposes an interesting technique for these alignments. The ontologies considered, as well as the proposed process, fits a standardization process, making it relevant to the workshop. The integration of simple and complex alignments makes it at the state of the art for semantic interoperability in the IoT, and the future work can be discussed live during the workshop, especially regarding the adaptation to the new version of ssn.
+
+
+R2. Defining semantic mediators would indeed be a good approach to achieve semantic interoperability between systems (including IoT platforms) if RDF lifting mechanisms has already been defined for the messages they expose/consume. The paper introduction and the background section motivate the work well and provide a good overview of the two ontologies to be aligned.
+
+
+------------------ REASONS TO REJECT -----------------
+
+R2. On the other hand, the application of this methodology to SSN-SAREF is on a too early stage to be useable or referenceable, the snippets are too vague and do not help to understand precisely the transformation. Also, there is a new version of SSN that is in the process of becoming a standard (it should be in Proposed Recommendation phase when the SEMANTiCS conference will hold).
+>> This was already addressed from the reviews of the main conference, SSN 2.0 is described at the end of SSN section and the discussion regarding the applicability of our mappings at the end of 4.3. Snippets were changed and the aim is to be a pseudocode to demonstrate the alignments. I added: "Furthermore, the use of pseudo-code to specify the translations seems not be the most adequate approach, which can be leveraged with a graphical modelling language for ontology alignments."
+
+
+
